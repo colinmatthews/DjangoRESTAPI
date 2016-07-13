@@ -1,5 +1,6 @@
-django==1.9.7
+Django==1.9.7
 djangorestframework==3.3.3
+gunicorn==19.6.0
 jdcal==1.2
 psycopg2==2.6.2
 requests==2.10.0
