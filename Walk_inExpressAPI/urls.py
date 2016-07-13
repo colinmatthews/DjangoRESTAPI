@@ -13,15 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,patterns
 from django.contrib import admin
 from rest_framework.urlpatterns import format_suffix_patterns
 from clinics import views
+from . import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^clinics/', views.ClinicList.as_view()),
 
 ]
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
