@@ -15,7 +15,7 @@ class ClinicList(APIView):
     def get(self,request):
         clinics = Clinic.objects.all()
         serializer = ClinicSerializer(clinics, many=True)
-        return Response(serializer.data)
+        return Response({'results': serializer.data})
 
     def post(self):
         pass
