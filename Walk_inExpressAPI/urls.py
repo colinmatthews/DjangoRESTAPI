@@ -24,9 +24,9 @@ urlpatterns = [
     url(r'^clinics/', views.ClinicList.as_view()),
 
 ]
-
-urlpatterns += patterns('',
-    (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-)
+if not settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
 
 urlpatterns = format_suffix_patterns(urlpatterns)
