@@ -15,7 +15,6 @@ class Clinic(models.Model):
     postalCode = models.CharField(max_length=6)
 
     phone = models.CharField(max_length=10)
-    logo = models.FileField()
     availableTimes = models.ManyToManyField('Time')
 
     def __str__(self):
@@ -27,4 +26,4 @@ class Time(models.Model):
     aTime = models.IntegerField()
 
     def __str__(self):
-        return self.aTime
+        return str(self.aTime)
