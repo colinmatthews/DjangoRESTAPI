@@ -16,15 +16,8 @@ class Clinic(models.Model):
 
     phone = models.CharField(max_length=10)
     logo = models.FileField()
-    availableTimes = models.ForeignKey('Time', on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
 
 
-class Time(models.Model):
-
-    aTime = models.IntegerField()
-
-    def __str__(self):
-        return self.aTime
