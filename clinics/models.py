@@ -24,7 +24,7 @@ class Clinic(models.Model):
 
 class Time(models.Model):
 
-    aTime = models.SmallIntegerField()
+    aTime = models.IntegerField()
 
     def __str__(self):
         return self.aTime
