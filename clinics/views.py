@@ -17,5 +17,10 @@ class ClinicList(APIView):
         serializer = ClinicSerializer(clinics, many=True)
         return Response({'results': serializer.data})
 
-    def post(self):
-        pass
+    def post(self,request):
+
+        serializer = ClinicSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
