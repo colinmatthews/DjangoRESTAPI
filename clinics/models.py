@@ -15,15 +15,10 @@ class Clinic(models.Model):
     postalCode = models.CharField(max_length=6)
 
     phone = models.CharField(max_length=10)
-    availableTimes = models.ManyToManyField('Time')
+    availableTimes = models.CharField(max_length=200)
 
     def __str__(self):
         return self.name
 
 
-class Time(models.Model):
 
-    aTime = models.IntegerField()
-
-    def __str__(self):
-        return str(self.aTime)
